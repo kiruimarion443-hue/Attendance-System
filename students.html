@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Students — AttendTrack</title>
+  <link rel="stylesheet" href="css/app.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><div class="brand-icon"><svg width="22" height="22" viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="10" height="10" rx="2" fill="currentColor"/><rect x="16" y="2" width="10" height="10" rx="2" fill="currentColor" opacity="0.5"/><rect x="2" y="16" width="10" height="10" rx="2" fill="currentColor" opacity="0.5"/><rect x="16" y="16" width="10" height="10" rx="2" fill="currentColor"/></svg></div><span>AttendTrack</span></div>
+  <nav class="sidebar-nav">
+    <a href="dashboard.html" class="nav-item"><svg viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/></svg>Overview</a>
+    <a href="classes.html" class="nav-item"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L2 6l8 4 8-4-8-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 10l8 4 8-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 14l8 4 8-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Classes</a>
+    <a href="students.html" class="nav-item active"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Students</a>
+    <a href="attendance.html" class="nav-item"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 2v4M13 2v4M3 9h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M7 13l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Take Attendance</a>
+    <a href="reports.html" class="nav-item"><svg viewBox="0 0 20 20" fill="none"><path d="M4 3h12a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M7 7h6M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Reports</a>
+  </nav>
+  <div class="sidebar-footer"><div class="user-chip" id="user-chip"><div class="avatar" id="nav-avatar">J</div><div class="user-info"><span class="user-name" id="nav-name">Loading…</span><span class="user-role" id="nav-org">—</span></div></div><button class="logout-btn" id="logout-btn" title="Sign out"><svg viewBox="0 0 20 20" fill="none"><path d="M13 10H3m0 0l3-3m-3 3l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 5V4a1 1 0 011-1h6a1 1 0 011 1v12a1 1 0 01-1 1h-6a1 1 0 01-1-1v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
+</aside>
+<header class="topbar"><button class="menu-toggle" id="menu-toggle"><svg viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><span class="topbar-title">Students</span></header>
+<main class="main-content">
+  <div class="page-header">
+    <div><h1>Students</h1><p class="sub">Manage student enrolments</p></div>
+    <button class="btn-accent" id="add-student-btn">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Add Student
+    </button>
+  </div>
+  <div class="filter-bar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M16 16l-3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" id="search-input" placeholder="Search by name or ID…"/>
+    </div>
+    <select class="filter-select" id="class-filter"><option value="">All Classes</option></select>
+  </div>
+  <div class="card">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Name</th><th>Student ID</th><th>Class</th><th>Added</th><th>Actions</th></tr></thead>
+        <tbody id="students-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal-backdrop hidden" id="student-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-title">Add Student</h3>
+      <button class="modal-close" id="modal-close-btn"><svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="form-section">
+      <div class="form-row-2">
+        <div class="field-group"><label>First Name *</label><input type="text" id="stu-fname" placeholder="Jane"/></div>
+        <div class="field-group"><label>Last Name *</label><input type="text" id="stu-lname" placeholder="Doe"/></div>
+      </div>
+      <div class="field-group"><label>Student ID / Reg No.</label><input type="text" id="stu-id" placeholder="e.g. 2024001"/></div>
+      <div class="field-group"><label>Class *</label>
+        <select id="stu-class"><option value="">— Select a class —</option></select>
+      </div>
+      <div class="field-group"><label>Email (optional)</label><input type="email" id="stu-email" placeholder="student@example.com"/></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-ghost" id="modal-cancel-btn">Cancel</button>
+      <button class="btn-accent" id="modal-save-btn">Save Student</button>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<script src="js/app.js"></script>
+<script src="js/students.js"></script>
+</body>
+</html>

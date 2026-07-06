@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AttendTrack — Smart Attendance Management</title>
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Animated background grid -->
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div class="auth-shell">
+    <!-- Logo / Brand -->
+    <div class="brand">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect x="2" y="2" width="10" height="10" rx="2" fill="currentColor"/>
+          <rect x="16" y="2" width="10" height="10" rx="2" fill="currentColor" opacity="0.5"/>
+          <rect x="2" y="16" width="10" height="10" rx="2" fill="currentColor" opacity="0.5"/>
+          <rect x="16" y="16" width="10" height="10" rx="2" fill="currentColor"/>
+        </svg>
+      </div>
+      <span class="brand-name">AttendTrack</span>
+    </div>
+
+    <!-- Tab switcher -->
+    <div class="auth-tabs">
+      <button class="tab-btn active" data-tab="login">Sign In</button>
+      <button class="tab-btn" data-tab="signup">Create Account</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="auth-panel" id="login-panel">
+      <div class="panel-header">
+        <h1>Welcome back</h1>
+        <p>Sign in to manage your attendance records</p>
+      </div>
+      <div id="login-error" class="alert alert-error hidden"></div>
+      <div class="form-group">
+        <label for="login-email">Email address</label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="none"><path d="M2.5 5.5A1.5 1.5 0 014 4h12a1.5 1.5 0 011.5 1.5v9A1.5 1.5 0 0116 16H4a1.5 1.5 0 01-1.5-1.5v-9z" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 6l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 9V6a3 3 0 016 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="password" id="login-password" placeholder="Your password" autocomplete="current-password"/>
+          <button class="toggle-pwd" type="button" data-target="login-password">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+      </div>
+      <button class="btn-primary" id="login-btn">Sign In</button>
+      <p class="switch-hint">No account? <a href="#" data-switch="signup">Create one free</a></p>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <div class="auth-panel hidden" id="signup-panel">
+      <div class="panel-header">
+        <h1>Get started</h1>
+        <p>Create your AttendTrack account — it's free</p>
+      </div>
+      <div id="signup-error" class="alert alert-error hidden"></div>
+      <div id="signup-success" class="alert alert-success hidden"></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="signup-fname">First name</label>
+          <div class="input-wrap">
+            <input type="text" id="signup-fname" placeholder="Jane"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="signup-lname">Last name</label>
+          <div class="input-wrap">
+            <input type="text" id="signup-lname" placeholder="Doe"/>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="signup-org">Organisation / School</label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="none"><path d="M3 17V8.5L10 3l7 5.5V17H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="7.5" y="12" width="5" height="5" rx=".5" stroke="currentColor" stroke-width="1.5"/></svg>
+          <input type="text" id="signup-org" placeholder="Acme Academy"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="signup-email">Email address</label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="none"><path d="M2.5 5.5A1.5 1.5 0 014 4h12a1.5 1.5 0 011.5 1.5v9A1.5 1.5 0 0116 16H4a1.5 1.5 0 01-1.5-1.5v-9z" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 6l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="email" id="signup-email" placeholder="you@example.com" autocomplete="email"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="signup-password">Password</label>
+        <div class="input-wrap">
+          <svg class="input-icon" viewBox="0 0 20 20" fill="none"><rect x="4" y="9" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M7 9V6a3 3 0 016 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="password" id="signup-password" placeholder="Min. 8 characters" autocomplete="new-password"/>
+          <button class="toggle-pwd" type="button" data-target="signup-password">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </div>
+        <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+        <span class="strength-label" id="strength-label"></span>
+      </div>
+      <button class="btn-primary" id="signup-btn">Create Account</button>
+      <p class="switch-hint">Already have an account? <a href="#" data-switch="login">Sign in</a></p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
